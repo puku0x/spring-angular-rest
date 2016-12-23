@@ -44,7 +44,7 @@ public class TodoService {
 	 * @param todo
 	 * @return
 	 */
-	public Todo create(Todo todo) {
+	public Todo save(Todo todo) {
 		return todoRepository.save(todo);
 	}
 	

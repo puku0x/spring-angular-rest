@@ -29,7 +29,7 @@ public class TodoController {
 	 * @return
 	 */
 	@RequestMapping(method=RequestMethod.GET)
-	public Page<Todo> findJAll(@RequestParam(name="offset") Integer offset, @RequestParam(name="limit") Integer limit) {
+	public Page<Todo> findAll(@RequestParam(name="offset") Integer offset, @RequestParam(name="limit") Integer limit) {
 		return todoService.findAll(offset, limit);
 	}
 	
@@ -42,7 +42,19 @@ public class TodoController {
 	public Todo create(@Valid @RequestBody TodoForm form) {
 		Todo todo = new Todo();
 		BeanUtils.copyProperties(form, todo);
-		return todoService.create(todo);
+		return todoService.save(todo);
+	}
+	
+	/**
+	 * 更新
+	 * @param form
+	 * @return
+	 */
+	@RequestMapping(value = "/{id}", method=RequestMethod.PUT)
+	public Todo update(@PathVariable("id") Integer id, @Valid @RequestBody TodoForm form) {
+		Todo todo = todoService.findById(id);
+		todo.setContent(form.getContent());
+		return todoService.save(todo);
 	}
 	
 	/**
