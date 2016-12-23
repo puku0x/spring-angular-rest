@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="app" ng-strict-di ng-cloak>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="http://code.angularjs.org/1.6.0/angular.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  </head>
+  <body class="container">
+    <div class="page-header">
+      <h1>ToDo Sample</h1>
+    </div>
+    <div ng-controller="TodoController as ctrl" ng-init="ctrl.init()">
+      <form name="form">
+        <div class="form-group">
+          <input type="text" name="content" ng-model="content" class="form-control" placeholder="内容" required />
+        </div>
+        <div class="alert alert-danger" role="alert" ng-show="form.content.$dirty && form.content.$error.required">内容を入力してください</div>
+        <div class="form-group">
+          <button class="btn btn-default" ng-click="ctrl.add(content); content=null; form.$setPristine();" ng-disabled="form.$invalid">追加</button>
+        </div>
+      </form>
+      <hr/>
+      <div class="list-group">
+        <a class="list-group-item" ng-repeat="todo in ctrl.todos track by $index">
+          <span class="text">{{todo.content}}</span>
+          <span class="close" ng-click="ctrl.remove(todo)">×</span>
+        </a>
+      </div>
+    </div>
+    <script src="js/app.js"></script>
+    <script src="js/services/todo.service.js"></script>
+    <script src="js/controllers/todo.controller.js"></script>
+  </body>
+</html>
