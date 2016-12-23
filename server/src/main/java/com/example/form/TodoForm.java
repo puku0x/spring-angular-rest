@@ -10,6 +10,6 @@ import lombok.Data;
 @Data
 public class TodoForm {
 	/** 内容 */
-	@Size(max = 3)
+	@Size(max = 100)
 	private String content;
 }
