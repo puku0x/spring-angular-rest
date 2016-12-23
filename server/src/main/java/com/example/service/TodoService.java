@@ -40,7 +40,7 @@ public class TodoService {
 	}
 	
 	/**
-	 * 登録
+	 * 保存
 	 * @param todo
 	 * @return
 	 */

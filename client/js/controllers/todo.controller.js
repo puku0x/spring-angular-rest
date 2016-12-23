@@ -18,8 +18,7 @@
     vm.todos = [];
 
     // 全件取得のパラメータ
-    var offset = 0;
-    var limit = 100;
+    var offset = 0, limit = 100;
 
     // 読み込み
     function load() {

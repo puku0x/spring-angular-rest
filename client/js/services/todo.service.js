@@ -9,7 +9,7 @@
   // DI
   Service.$inject = ['$http'];
 
-  // コントローラ
+  // サービス
   function Service($http) {
     var baseUrl = 'http://localhost:8080/api/v1';
 
